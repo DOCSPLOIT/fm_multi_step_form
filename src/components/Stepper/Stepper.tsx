@@ -15,13 +15,15 @@ export default function Stepper(props: any) {
         throw "At least two components required"
     }
     function next() {
+
         if (current < total) {
-            setCurrent(prev => prev++);
+            console.log(current);
+            setCurrent(current + 1);
         }
     }
     function previous() {
         if (current > 0 && current <= total) {
-            setCurrent(prev => prev--)
+            setCurrent(current - 1)
         }
     }
 
@@ -40,7 +42,7 @@ export default function Stepper(props: any) {
             <div className="h-full w-[30%] overflow-hidden pt-10 rounded-lg bg-no-repeat bg-[url('src/assets/images/bg-sidebar-desktop.svg')] bg-contain">
                 {
                     props.heads.map((text: string, index: number) => {
-                        return <div className="flex cursor-pointer space-x-4 px-7  " onClick={() => onClickStep(index)}>
+                        return <div key={index} className="flex cursor-pointer space-x-4 px-7  " onClick={() => onClickStep(index)}>
                             <div className="mb-8">
                                 <p className={"rounded-full h-[30px] w-[30px] text-center  " + classNameOfNumber(index)}>{index + 1}</p>
                             </div>
@@ -64,4 +66,4 @@ export default function Stepper(props: any) {
 
 
 
-const StepperContext = React.createContext({ total: 0, current: 0, next() { }, previous() { } })
+export const StepperContext = React.createContext({ total: 0, current: 0, next() { }, previous() { } })
