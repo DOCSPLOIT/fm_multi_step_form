@@ -34,7 +34,7 @@ export default function Stepper(props: any) {
     }
 
     function onClickStep(index: number) {
-        setCurrent(index)
+        // setCurrent(index)
     }
 
     return <StepperContext.Provider value={{ current, next, previous, total }}>

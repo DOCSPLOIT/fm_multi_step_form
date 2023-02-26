@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import React, { useContext } from 'react'
-import { object, string } from 'yup'
+import { number, object, string } from 'yup'
 import { StepperContext } from '../Stepper/Stepper'
 import Input from './components/Input'
 import { FormContext } from './Form'
@@ -18,7 +18,7 @@ function InfoForm() {
         validationSchema: object().shape({
             name: string().required('This field is required'),
             email: string().required('This field is required').email(),
-            phone: string().required('This field is required')
+            phone: number().required('This field is required').typeError('Must be a number')
         }),
 
         onSubmit() {

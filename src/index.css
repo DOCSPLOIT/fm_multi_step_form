@@ -6,6 +6,6 @@ body {
   background-color: #eef5ff;
 }
 * {
-  transition: 1s;
+  transition: 500ms;
   font-family: "Ubuntu", sans-serif;
 }

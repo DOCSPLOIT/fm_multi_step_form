@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function Form(props: any) {
     const [personalInfo, setPersonalInfo] = useState({ name: '', phone: '', email: '' });
-    const [plan, setPlan] = useState({ type: 0, monthly: false, yearly: true });
+    const [plan, setPlan] = useState({ type: undefined, yearly: false });
     const [addOns, setAddOns] = useState([])
 
     return <FormContext.Provider value={{ personalInfo, setPersonalInfo, plan, setPlan, addOns, setAddOns }}>
@@ -21,9 +21,8 @@ type PersonalInfo = {
     email: string
 }
 type Plan = {
-    type: number,
+    type?: number,
     yearly: boolean,
-    monthly: boolean
 }
 
 type FormContextProps = {
