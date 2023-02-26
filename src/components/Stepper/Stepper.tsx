@@ -16,7 +16,7 @@ export default function Stepper(props: any) {
     }
     function next() {
 
-        if (current < total) {
+        if ((current+1) < total) {
             console.log(current);
             setCurrent(current + 1);
         }
@@ -39,7 +39,7 @@ export default function Stepper(props: any) {
 
     return <StepperContext.Provider value={{ current, next, previous, total }}>
         <div className="h-full w-full flex space-x-12">
-            <div className="h-full w-[30%] overflow-hidden pt-10 rounded-lg bg-no-repeat bg-[url('src/assets/images/bg-sidebar-desktop.svg')] bg-contain">
+            <div className=" w-[30%]  overflow-hidden pt-10 rounded-lg bg-no-repeat bg-[url('src/assets/images/bg-sidebar-desktop.svg')] bg-contain">
                 {
                     props.heads.map((text: string, index: number) => {
                         return <div key={index} className="flex cursor-pointer space-x-4 px-7  " onClick={() => onClickStep(index)}>

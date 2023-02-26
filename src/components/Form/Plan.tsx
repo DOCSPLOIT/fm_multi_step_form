@@ -39,8 +39,9 @@ function Plan() {
                     <DoubleLabeledSwitch checked={isYearly} label1={'Monthly'} label2={'Yearly'} onChange={(e: boolean) => setYearly(e)} />
                 </div>
 
-                <div className='mt-28'>
+                <div className='mt-24'>
                     <button
+                    type="button"
                         onClick={(e) => {
                             e.stopPropagation();
                             e.preventDefault();
@@ -50,6 +51,7 @@ function Plan() {
                         Go Back
                     </button>
                     <button
+                    type='button'
                         onClick={(e) => {
                             e.stopPropagation();
                             e.preventDefault();
