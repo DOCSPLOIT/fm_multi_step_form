@@ -29,8 +29,8 @@ export default function Stepper(props: any) {
 
     function classNameOfNumber(index: number) {
         if (current === index) {
-            return "bg-white"
-        } else { return "border-2 text-white" }
+            return "bg-[hsl(228,100%,84%)] text-[hsl(213,96%,18%)] border-2 border-[hsl(228,100%,84%)] font-medium"
+        } else { return "border-2 text-white font-medium" }
     }
 
     function onClickStep(index: number) {
@@ -47,7 +47,7 @@ export default function Stepper(props: any) {
                                 <p className={"rounded-full h-[30px] w-[30px] text-center  " + classNameOfNumber(index)}>{index + 1}</p>
                             </div>
                             <div>
-                                <p className="leading-[.8] text-[.75rem] font-medium text-white">STEP {index + 1}</p>
+                                <p className="leading-[.8] text-[.75rem]  text-[hsl(229,24%,87%)]">STEP {index + 1}</p>
                                 <p className="font-bold text-[.92rem] leading-[1.5rem] text-white">{text.toUpperCase()}</p>
                             </div>
                         </div>

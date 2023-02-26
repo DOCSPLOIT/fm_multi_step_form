@@ -11,9 +11,9 @@ function InfoForm() {
     const stepperCtx = useContext(StepperContext)
     const formik = useFormik({
         initialValues: {
-            name: '',
-            email: '',
-            phone: ""
+            name: formCtx.personalInfo?.name,
+            email: formCtx.personalInfo?.email,
+            phone: formCtx.personalInfo?.phone
         },
         validationSchema: object().shape({
             name: string().required('This field is required'),
@@ -38,6 +38,7 @@ function InfoForm() {
                     invalid={formik.touched.name && formik.errors.name !== undefined}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    value={formik.values.name}
                     id="name"
                     name="name"
                     placeholder='e.g. Stephen King'
@@ -47,6 +48,8 @@ function InfoForm() {
                     errorText={formik.errors.email}
                     invalid={formik.touched.email && formik.errors.email !== undefined}
                     onChange={formik.handleChange}
+                    value={formik.values.email}
+
                     onBlur={formik.handleBlur}
                     id="email"
                     name="email"
@@ -58,6 +61,8 @@ function InfoForm() {
                     invalid={formik.touched.phone && formik.errors.phone !== undefined}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    value={formik.values.phone}
+
                     id="phone"
                     name="phone"
                     placeholder='e.g. +1 234 567 890'
