@@ -43,7 +43,7 @@ export default function Stepper(props: any) {
 
     return <StepperContext.Provider value={{ current, next, previous, total ,goto }}>
         <div className="h-full w-full md:flex md:space-x-12">
-            <div className=" h-[172px] md:min-w-[274px]  md:min-h-[568px] flex justify-center md:flex-col overflow-hidden md:pt-10 md:rounded-lg bg-no-repeat bg-[url('src/assets/images/bg-sidebar-mobile.svg')] md:bg-[url('src/assets/images/bg-sidebar-desktop.svg')] bg-contain">
+            <div className=" h-[172px] md:min-w-[274px]  md:min-h-[568px] flex justify-center md:flex-col overflow-hidden md:pt-10 md:rounded-lg bg-no-repeat bg-[url('./assets/images/bg-sidebar-mobile.svg')] md:bg-[url('./assets/images/bg-sidebar-desktop.svg')] bg-contain">
                 {
                     props.heads.map((text: string, index: number) => {
                         return <div key={index} className="flex cursor-pointer md:space-x-4 md:px-7 px-3  pt-5 md:pt-auto  " onClick={() => onClickStep(index)}>
