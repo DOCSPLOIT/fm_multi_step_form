@@ -24,8 +24,8 @@ function Summary() {
 
     }
     if(isConfirmed){
-        return( <div className=''>
-                <img src={CheckIcon} className="mt-24 mx-auto"  width={75} alt="_check"/>
+        return( <div className='bg-white p-6 py-24 md:p-0 rounded-lg shadow-lg md:bg-transparent md:shadow-none'>
+                <img src={CheckIcon} className="md:mt-24 mx-auto"  width={75} alt="_check"/>
                 <p className='text-3xl my-4 text-center font-bold text-[#03285a]'>Thank you!</p>
                 <p className='text-sm text-center mx-auto w-3/4  text-gray-400 w-'>Thanks for confirming your subscription! We hope you have
                    fun suing our platform. If you ever need support, please feel
@@ -35,15 +35,17 @@ function Summary() {
         </div>)
     }else{
   return (
-    <div>
+    <div className='bg-white p-6 pb-2 md:p-0 rounded-lg shadow-lg md:bg-transparent md:shadow-none'>
             <h1 className='text-3xl leading-[1rem] text-[#03285a] tracking-tight font-bold'>Finishing up</h1>
             <p className='text-[.9rem] font-medium text-gray-500 mt-[1.2rem]'>Double-check everything looks OK before confirming.</p>
-            <form className='mt-8 pr-16 '>
+            <form className='mt-8 md:pr-16 '>
                 <div className='bg-[#f8f9fe] p-5  rounded-lg'>
                     <div className='border-b pb-6'>
                         <span className='mr-auto text-sm font-bold text-[hsl(213,96%,18%)]'>{plans[plan!.type!].name}({plan?.yearly?'Yearly':'Monthly'})</span>
                         <span className='float-right text-sm font-bold text-[hsl(213,96%,18%)]'>${plans[plan!.type!].price[plan?.yearly?'yearly':'monthly']}/{plan?.yearly?'yr':'mo'}</span>
-                        <p  className='text-xs text-gray-400 underline cursor-pointer'>Change</p>
+                        <p onClick={()=>{
+                            stepperCtx.goto(1)
+                        }}  className='text-xs text-gray-400 underline cursor-pointer'>Change</p>
                     </div>
                     <div>
                         {addOns?.map(item=>{
@@ -58,7 +60,7 @@ function Summary() {
                     <span className='text-sm font-medium text-gray-400'>Total (per {plan?.yearly?'year':'month'})</span>
                     <span className='float-right font-bold text-[hsl(243,100%,62%)]'>+${total()}/{plan?.yearly?'yr':'mo'}</span>
                 </div>
-                <div className='mt-24'>
+                <div className='md:mt-24 absolute md:relative bottom-0 left-0 w-full p-4 md:p-0 bg-white'>
                     <button
                     type="button"
                         onClick={(e) => {

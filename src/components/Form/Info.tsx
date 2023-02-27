@@ -28,10 +28,10 @@ function InfoForm() {
     })
 
     return (
-        <div>
+        <div className='bg-white p-6 rounded-lg shadow-lg md:bg-transparent md:shadow-none'>
             <h1 className='text-3xl leading-[1rem] text-[#03285a] tracking-tight font-bold'>Personal info</h1>
             <p className='text-[.9rem] font-medium text-gray-500 mt-[1.2rem]'>Please provide your name, email address, and phone number</p>
-            <form className='mt-8 pr-16 ' onSubmit={formik.handleSubmit}>
+            <form className='mt-8 md:pr-16 ' onSubmit={formik.handleSubmit}>
                 <Input
                     label='Name'
                     errorText={formik.errors.name}
@@ -67,11 +67,13 @@ function InfoForm() {
                     name="phone"
                     placeholder='e.g. +1 234 567 890'
                 />
+                <div className='absolute bottom-0 left-0 p-5 bg-white w-full md:relative md:p-0'>
                 <button
                     type="submit"
                     className='bg-[hsl(213,96%,18%)] px-5 py-3 rounded-lg float-right hover:bg-[#1556a7] text-white font-medium'>
                     Next Step
                 </button>
+                </div>
             </form>
         </div>
     )

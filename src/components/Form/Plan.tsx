@@ -20,11 +20,11 @@ function Plan() {
         }
     }
     return (
-        <div>
+        <div className='bg-white p-6 pb-2 md:p-0 rounded-lg shadow-lg md:bg-transparent md:shadow-none'>
             <h1 className='text-3xl leading-[1rem] text-[#03285a] tracking-tight font-bold'>Select your plan</h1>
             <p className='text-[.9rem] font-medium text-gray-500 mt-[1.2rem]'>You have the option of monthly or yearly billing.</p>
-            <form className='mt-8 pr-16  '>
-                <div className="flex space-x-3 my-3">
+            <form className='mt-8 md:pr-16  '>
+                <div className="md:flex space-y-3 md:space-y-0 md:space-x-3 md:my-3">
                     {
                         plans.map((item, i) => <PlanItem
                             key={i} {...item}
@@ -39,7 +39,7 @@ function Plan() {
                     <DoubleLabeledSwitch checked={isYearly} label1={'Monthly'} label2={'Yearly'} onChange={(e: boolean) => setYearly(e)} />
                 </div>
 
-                <div className='mt-24'>
+                <div className='md:mt-24 absolute md:relative bottom-0 left-0 w-full p-4 md:p-0 bg-white'>
                     <button
                     type="button"
                         onClick={(e) => {
@@ -68,12 +68,15 @@ function Plan() {
 
 
 const PlanItem = (props: any) => {
-    return <div onClick={props.onSelect} className={'border rounded-lg w-1/3 p-4 hover:border-[hsl(243,100%,62%)] cursor-pointer ' + props.className}  >
-        <img alt="icon" src={props.image} />
-        <p className='font-bold text-[hsl(213,96%,18%)] mt-8'>{props.name}</p>
-        <p className='text-sm font-medium text-gray-400'>${props.yearly ? props.price.yearly + '/yr' : props.price.monthly + '/mo'}</p>
-        {props.yearly && (<p className='text-xs mt-2 text-[hsl(213,96%,18%)]'>2 months free</p>)}
+    return<div onClick={props.onSelect} className={'border rounded-lg p-4 hover:border-[hsl(243,100%,62%)] cursor-pointer ' + props.className + ' flex md:w-1/3 md:flex-col flex-row space-x-4 md:space-x-0 md:space-y-4'}>
+    <img alt="icon" width={40} src={props.image} />
+    <div className="md:ml-4">
+      <p className='font-bold text-[hsl(213,96%,18%)]'>{props.name}</p>
+      <p className='text-sm font-medium text-gray-400'>${props.yearly ? props.price.yearly + '/yr' : props.price.monthly + '/mo'}</p>
+      {props.yearly && (<p className='text-xs mt-2 text-[hsl(213,96%,18%)]'>2 months free</p>)}
     </div>
+  </div>
+  
 }
 
 

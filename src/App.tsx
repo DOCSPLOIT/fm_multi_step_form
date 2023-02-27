@@ -7,8 +7,8 @@ import Stepper from './components/Stepper/Stepper'
 import './index.css'
 
 export default function App() {
-  return <div className='min-h-screen w-screen pt-12'>
-    <div className=' m-auto w-[65vw] rounded-lg mt-[3.1rem] min-h-[74vh] p-4 bg-white shadow-lg'>
+  return <div className='md:min-h-screen md:w-screen md:pt-12'>
+    <div className=' m-auto md:w-[65vw] rounded-lg md:mt-[3.1rem] md:min-h-[74vh] md:p-4 md:bg-white md:shadow-lg'>
       <Form>
         <Stepper heads={["Your Info", "Select Plan", "ADD-ONS","Summary"]} >
           <InfoForm />

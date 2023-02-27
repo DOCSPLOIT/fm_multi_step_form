@@ -5,7 +5,7 @@ import { FormContext } from './Form'
 function AddOns() {
     const frmCtx = useContext(FormContext);
     const stepperCtx = useContext(StepperContext);
-    let items:any =[];
+    let items:any[] =frmCtx.addOns!;
     
     function saveItems(){
         frmCtx.setAddOns(items);
@@ -13,15 +13,17 @@ function AddOns() {
     }
 
     return (
-        <div>
+        <div className='bg-white p-6 pb-2 md:p-0 rounded-lg shadow-lg md:bg-transparent md:shadow-none'>
         <h1 className='text-3xl leading-[1rem] text-[#03285a] tracking-tight font-bold'>Pick add-ons</h1>
         <p className='text-[.9rem] font-medium text-gray-500 mt-[1.2rem]'>Please provide your name, email address, and phone number</p>
-        <form className='mt-8 pr-16 '>
+        <form className='mt-8 md:pr-16 '>
             <div>
-           {addOns.map((t,i)=> <Checkbox 
+           {addOns.map((t,i)=> <Checkbox
+
                                     title={t.name} 
                                     subtitle={t.desc} 
                                     tail={frmCtx.plan?.yearly?`$${t.amount.yearly}/yr`:`$${t.amount.monthly}/mr`}
+                                    checked={items.some(value=>value.name===t.name)}
                                     onChange={(e:boolean)=>{
                                         if(e){
                                             items.push(t);
@@ -31,7 +33,7 @@ function AddOns() {
                                     }}
                                     />)}
             </div>
-            <div className='mt-20'>
+            <div className='md:mt-24 absolute md:relative bottom-0 left-0 w-full p-4 md:p-0 bg-white'>
                     <button
                     type="button"
                         onClick={(e) => {
@@ -62,9 +64,9 @@ function AddOns() {
 
 
 
-function Checkbox({ title, subtitle, tail,onChange }:{title:string,subtitle:string,tail:string,onChange:any}) {
-    const [isChecked, setIsChecked] = React.useState(false);
-  
+function Checkbox({ title, subtitle, tail,onChange,checked=false }:{title:string,subtitle:string,tail:string,onChange:any,checked:boolean}) {
+    const [isChecked, setIsChecked] = React.useState(checked);
+    
     return (
       <label className={`flex items-center my-3 border rounded-lg  hover:border-[hsl(243,100%,62%)] px-4 py-2 transition-colors ${isChecked ? 'bg-[#f8f9fe] border-[hsl(243,100%,62%)]' : ''}`}>
         <div className="flex items-center flex-1 min-w-0">
@@ -91,6 +93,12 @@ function Checkbox({ title, subtitle, tail,onChange }:{title:string,subtitle:stri
   
 
 
+
+  const hasSameObject=(arr1:any[],arr2:any[]) => arr1.some(obj1 => {
+    return arr2.some(obj2 => {
+      return  obj1.name === obj2.name;
+    });
+  });
 
 
 
